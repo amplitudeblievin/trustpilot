@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trustpilot Pricing Replica</title>
+    <link rel="stylesheet" href="trustpilot-pricing.css" />
+    <script src="https://cdn.amplitude.com/script/e3ba67e2674d5fabbdcbd8f2cddcbf2a.js"></script>
+    <script src="https://cdn.amplitude.com/script/e3ba67e2674d5fabbdcbd8f2cddcbf2a.experiment.js"></script>
+    <script src="https://unpkg.com/@amplitude/experiment-js-client@1.15.5/dist/experiment.umd.js"></script>
+    <script>
+      var API_KEY = "e3ba67e2674d5fabbdcbd8f2cddcbf2a";
+      var EXPERIMENT_DEPLOYMENT_KEY = "client-FZXDY7CjmseQr3M4Wjrciuxsz957faW2";
+      var EXPERIMENT_KEY = "template-agent";
+
+      window.amplitude.init(API_KEY, {
+        fetchRemoteConfig: true,
+        autocapture: true
+      });
+      window.amplitude.track("Pricing Page Viewed", {
+        page: "Trustpilot Pricing Replica"
+      });
+
+      (function() {
+        if (typeof Experiment === "undefined") return;
+        var experiment = Experiment.initializeWithAmplitudeAnalytics(EXPERIMENT_DEPLOYMENT_KEY);
+        experiment.fetch().then(function() {
+          var variant = experiment.variant(EXPERIMENT_KEY);
+          console.log(variant)
+          var plan = variant && variant.payload && variant.payload.plan;
+          console.log(plan)
+          if (plan) {
+            var planId = String(plan).toLowerCase();
+            var sticker = document.getElementById("sticker-" + planId);
+            if (sticker) sticker.style.display = "inline-block";
+          }
+        }).catch(function() {});
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-star"></span>
+          <span class="logo-text">Trustpilot for Business</span>
+        </div>
+        <nav class="main-nav">
+          <a href="#">Solutions</a>
+          <a href="#">Features</a>
+          <a class="active" href="#">Pricing</a>
+          <a href="#">Resources</a>
+          <a href="#">Company</a>
+        </nav>
+        <div class="header-actions">
+          <button class="ghost-button">Log in</button>
+          <button class="primary-button">Create free account</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Turn trust into action with Trustpilot</h1>
+          <p class="subhead">
+            Choose the right plan to help you reach more customers, earn their
+            trust and keep them loyal for life.
+          </p>
+          <p class="small-note">
+            All contracts are a 12-month commitment, starting at the prices
+            below.
+          </p>
+        </div>
+        <div class="hero-offers">
+          <article class="hero-card">
+            <div class="hero-card-top">
+              <p class="hero-card-label hero-card-label-top-choice" id="sticker-plus" style="display: none;">Top choice</p>
+              <h2>Plus</h2>
+              <p class="hero-price-label">from</p>
+              <p class="hero-price">
+                <span class="price-amount">$339</span>
+                <span class="price-unit">per month, per domain, billed monthly</span>
+              </p>
+            </div>
+            <button class="primary-button full-width">Book a demo</button>
+            <p class="hero-card-desc">Build trust in your growing business with verified reviews and marketing tools</p>
+            <ul>
+              <li>Streamline customer engagement with invitation and reply integrations</li>
+              <li>Drive conversions with marketing assets and website widgets</li>
+              <li>Inform your review strategy with performance insights</li>
+              <li>Remove third party ads and competitor mentions to keep eyes on you</li>
+            </ul>
+            <button class="link-button">See Plus in full</button>
+          </article>
+          <article class="hero-card" id="premium-hero-card">
+            <div class="hero-card-top">
+              <p class="hero-card-label hero-card-label-top-choice" id="sticker-premium" style="display: none;">Top choice</p>
+              <h2>Premium</h2>
+              <p class="hero-price-label">from</p>
+              <p class="hero-price">
+                <span class="price-amount">$699</span>
+                <span class="price-unit">per month, per domain, billed monthly</span>
+              </p>
+            </div>
+            <button class="primary-button full-width">Book a demo</button>
+            <p class="hero-card-desc">Drive growth with actionable analytics and showcasing assets proven to convert customers</p>
+            <ul>
+              <li>Forecast your future TrustScore with a predictive 12-month look ahead</li>
+              <li>Design high-performing social assets in minutes</li>
+              <li>Benchmark your business against five others to outpace competitors</li>
+              <li>Explore all your data in one place to easily surface trends and opportunities</li>
+              <li>Access Trustpilot's APIs via add-ons</li>
+            </ul>
+            <button class="link-button">See Premium in full</button>
+          </article>
+          <article class="hero-card">
+            <div class="hero-card-top">
+              <p class="hero-card-label hero-card-label-top-choice" id="sticker-advanced" style="display: none;">Top choice</p>
+              <h2>Advanced</h2>
+              <p class="hero-price-label">from</p>
+              <p class="hero-price">
+                <span class="price-amount">$1,099</span>
+                <span class="price-unit">per month, per domain, billed monthly</span>
+              </p>
+            </div>
+            <button class="primary-button full-width">Book a demo</button>
+            <p class="hero-card-desc">Lead in your market with powerful insights and brand-boosting customization</p>
+            <ul>
+              <li>Customize analytics dashboards, invitations, reminders and more</li>
+              <li>Tag feedback to uncover themes and generate highly-targeted widgets</li>
+              <li>Design on-brand widgets to fit your website and convert more customers</li>
+              <li>Assess your performance in the market to move into the lead</li>
+              <li>Access Salesforce integration and Trustpilot's APIs via add-ons</li>
+            </ul>
+            <button class="link-button">See Advanced in full</button>
+          </article>
+          <article class="hero-card hero-card-enterprise">
+            <div class="hero-card-top hero-card-top-enterprise">
+              <p class="hero-card-label hero-card-label-top-choice" id="sticker-enterprise" style="display: none;">Top choice</p>
+              <h2>Enterprise</h2>
+              <p class="hero-price hero-price-request">Pricing upon request</p>
+              <button class="secondary-button full-width">Contact sales for a quote</button>
+            </div>
+            <button class="primary-button full-width">Book a demo</button>
+            <button class="link-button">See Enterprise in full</button>
+            <p class="hero-card-desc">Experience exclusive, secure solutions and AI-powered tools</p>
+            <ul>
+              <li>Make Trustpilot your own with full access to APIs</li>
+              <li>Operate your review strategy at scale with AI-powered tools</li>
+              <li>Reveal profile visitor insights to discover untapped audiences</li>
+              <li>Ask for more from your reviewers with private follow up questions</li>
+              <li>Make data-driven decisions with regular insights summaries of review activity</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Review our plans</h2>
+          <p>Find the plan that aligns with your growth goals.</p>
+        </div>
+        <div class="plan-grid">
+          <article class="plan-card">
+            <h3>Plus</h3>
+            <p class="plan-price">$339</p>
+            <p class="plan-caption">per month, per domain</p>
+            <p class="plan-desc">
+              Build trust with verified reviews and marketing tools.
+            </p>
+            <ul>
+              <li>Streamlined invitation workflows</li>
+              <li>Widgets and marketing assets</li>
+              <li>Performance insights</li>
+            </ul>
+            <button class="primary-button full-width">Book a demo</button>
+          </article>
+          <article class="plan-card">
+            <h3>Premium</h3>
+            <p class="plan-price">$699</p>
+            <p class="plan-caption">per month, per domain</p>
+            <p class="plan-desc">
+              Drive growth with analytics and conversion assets.
+            </p>
+            <ul>
+              <li>TrustScore forecasting</li>
+              <li>Social asset builder</li>
+              <li>Benchmark against competitors</li>
+            </ul>
+            <button class="primary-button full-width">Book a demo</button>
+          </article>
+          <article class="plan-card">
+            <h3>Advanced</h3>
+            <p class="plan-price">$1,099</p>
+            <p class="plan-caption">per month, per domain</p>
+            <p class="plan-desc">
+              Lead your market with customization and insights.
+            </p>
+            <ul>
+              <li>Custom dashboards and invitations</li>
+              <li>Tag and theme analysis</li>
+              <li>On-brand widget design</li>
+            </ul>
+            <button class="primary-button full-width">Book a demo</button>
+          </article>
+          <article class="plan-card">
+            <h3>Enterprise</h3>
+            <p class="plan-price">Pricing on request</p>
+            <p class="plan-caption">Custom contracts</p>
+            <p class="plan-desc">
+              Secure solutions and AI-powered tools at scale.
+            </p>
+            <ul>
+              <li>Full access to APIs</li>
+              <li>AI-powered review workflows</li>
+              <li>Dedicated success support</li>
+            </ul>
+            <button class="primary-button full-width">Book a demo</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats-inner">
+        <h2>Trustpilot reviews are used by 1.17+ million businesses</h2>
+        <div class="logo-row">
+          <span>Affirm</span>
+          <span>Care.com</span>
+          <span>Grubhub</span>
+          <span>Rakuten Kobo</span>
+          <span>Rocket Loans</span>
+          <span>Experian</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How our pricing works</h2>
+          <p>Transparent steps to finalize the right plan.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-card">
+            <span class="process-icon">1</span>
+            <h3>Review our plans</h3>
+            <p>Determine the best plan for your business goals.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-icon">2</span>
+            <h3>Enhance your plan</h3>
+            <p>Add modules and integrations where applicable.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-icon">3</span>
+            <h3>Confirm your domains</h3>
+            <p>Pricing is per domain for an accurate quote.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-icon">4</span>
+            <h3>Review your quote</h3>
+            <p>Receive a tailored quote based on your needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Compare all plans</h2>
+          <p>Feature highlights across Free and paid tiers.</p>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Features</th>
+                <th>Free</th>
+                <th>Plus</th>
+                <th>Premium</th>
+                <th>Advanced</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-section">
+                <td colspan="6">Invite reviews</td>
+              </tr>
+              <tr>
+                <td>Automated monthly invitations</td>
+                <td>50</td>
+                <td>200</td>
+                <td>500</td>
+                <td>5,000</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td>Customizable invitation templates</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr class="table-section">
+                <td colspan="6">Engage with feedback</td>
+              </tr>
+              <tr>
+                <td>Reply to reviews</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Review tagging and filtering</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr class="table-section">
+                <td colspan="6">Accelerate conversions</td>
+              </tr>
+              <tr>
+                <td>TrustBox widgets</td>
+                <td>1</td>
+                <td>8</td>
+                <td>Full access</td>
+                <td>Full access</td>
+                <td>Full access</td>
+              </tr>
+              <tr>
+                <td>Asset builder</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr class="table-section">
+                <td colspan="6">Improve with insights</td>
+              </tr>
+              <tr>
+                <td>Market insights</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Visitor insights</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Frequently asked questions</h2>
+          <p>Quick answers about getting started.</p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>How does Trustpilot work?</h3>
+            <p>
+              Trustpilot helps businesses collect and respond to verified
+              reviews, building credibility with customers.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Do I have to pay when I sign up?</h3>
+            <p>
+              You can start with a free plan and upgrade whenever you're ready
+              for more advanced tools.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>What happens to my reviews if I stop?</h3>
+            <p>
+              Your reviews remain on your profile page, keeping your feedback
+              history intact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="logo">
+            <span class="logo-star"></span>
+            <span class="logo-text">Trustpilot</span>
+          </div>
+          <p class="footer-note">© 2026 Trustpilot Inc. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>Company</h4>
+            <a href="#">About us</a>
+            <a href="#">Jobs</a>
+            <a href="#">Press</a>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <a href="#">Blog</a>
+            <a href="#">Guides</a>
+            <a href="#">Help Center</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <a href="#">Contact Sales</a>
+            <a href="#">Support</a>
+            <a href="#">Offices</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
